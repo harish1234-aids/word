@@ -1,0 +1,133 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    text-align: center;
+    user-select: none;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 { color: #333; }
+
+  .score {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #007bff;
+  }
+
+  .game-container {
+    margin-left: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 40px);
+    gap: 4px;
+    background: #ccc;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: crosshair;
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+    background: white;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  .cell.selected {
+    background: #b3e5ff;
+    color: #007bff;
+  }
+
+  .cell.found {
+    background: #4caf50 !important;
+    color: white !important;
+  }
+
+  .words {
+    text-align: left;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .word {
+    font-size: 18px;
+    margin: 8px 0;
+    color: #555;
+    font-weight: bold;
+  }
+
+  .word.found {
+    text-decoration: line-through;
+    color: #4caf50;
+    opacity: 0.6;
+  }
+
+  .win-screen {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .win-box {
+    background: white;
+    padding: 100px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: pop 0.3s ease;
+  }
+
+  .win-box:hover{
+        box-shadow:
+  0 0 60px 30px rgb(238, 250, 66);
+
+  }
+
+  @keyframes pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .win-box h2 {
+    color: #4caf50;
+    margin-bottom: 10px;
+  }
+
+  .win-score {
+    font-size: 22px;
+    margin: 15px 0;
+  }
+
+  .restart-btn {
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .restart-btn:hover {
+    background: #0056b3;
+  }

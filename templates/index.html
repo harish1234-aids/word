@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Word Search Game</title>
+
+</head>  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<body>
+
+<h1>🔍 Word Search Game</h1>
+<div class="score">Score: <span id="score">0</span></div>
+
+<div class="game-container">
+  <div class="grid" id="grid"></div>
+
+  <div class="words">
+    <h3>Find these words:</h3>
+    <div class="word" data-word="MARINA">MARINA</div>
+    <div class="word" data-word="SUN">SUN</div>
+    <div class="word" data-word="AIRCOOLER">AIRCOOLER</div>
+    <div class="word" data-word="VACATION">VACATION</div>
+    <div class="word" data-word="SWIMMING">SWIMMING</div>
+    <div class="word" data-word="FAN">FAN</div>
+    <div class="word" data-word="MANGO">MANGO</div>
+  </div>
+</div>
+
+<div class="win-screen" id="winScreen">
+  <div class="win-box">
+    <h2>🎉 You Win!</h2>
+    <div class="win-score">Final Score: <span id="finalScore"></span></div>
+    <button class="restart-btn" onclick="restartGame()">🔄 Restart</button>
+  </div>
+</div>
+<script>
+  const correctSoundUrl = "{{ url_for('static', filename='audio/game-audio.mp3') }}";
+</script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
