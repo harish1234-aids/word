@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Word Search Game</title>
-
-</head>  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
+</head>
 <body>
 
 <h1>🔍 Word Search Game</h1>
@@ -33,9 +33,7 @@
     <button class="restart-btn" onclick="restartGame()">🔄 Restart</button>
   </div>
 </div>
-<script>
-  const correctSoundUrl = "{{ url_for('static', filename='audio/game-audio.mp3') }}";
-</script>
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script> const correctSoundUrl = "{{ url_for('static', filename='audio/game-audio.mp3') }}"; </script>
+<script src="{{url_for('static' ,filename='js/script.js')}}"></script>
 </body>
 </html>

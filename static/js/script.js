@@ -50,29 +50,6 @@ function createGrid() {
 
 createGrid();
 
-gridElement.addEventListener("mousedown", e => {
-  e.preventDefault();
-  const cell = e.target.closest(".cell");
-  if (!cell || cell.classList.contains("found")) return;
-
-  isDragging = true;
-  startIndex = parseInt(cell.dataset.index);
-  updateSelection(startIndex);
-});
-
-document.addEventListener("mousemove", e => {
-  if (!isDragging) return;
-  const cell = document.elementFromPoint(e.clientX, e.clientY)?.closest(".cell");
-  if (cell) updateSelection(parseInt(cell.dataset.index));
-});
-
-document.addEventListener("mouseup", () => {
-  if (!isDragging) return;
-  isDragging = false;
-  checkWord();
-  clearSelection(true);
-});
-
 function updateSelection(endIndex) {
   clearSelection(false);
 
@@ -130,6 +107,58 @@ function checkWin() {
   }
 }
 
+function clearSelection(reset) {
+  cells.forEach(c => c.classList.remove("selected"));
+  if (reset) {
+    currentWord = "";
+    startIndex = null;
+  }
+}
+
+gridElement.addEventListener("mousedown", e => {
+  e.preventDefault();
+  const cell = e.target.closest(".cell");
+  if (!cell || cell.classList.contains("found")) return;
+  isDragging = true;
+  startIndex = parseInt(cell.dataset.index);
+  updateSelection(startIndex);
+});
+
+document.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  const cell = document.elementFromPoint(e.clientX, e.clientY)?.closest(".cell");
+  if (cell) updateSelection(parseInt(cell.dataset.index));
+});
+
+document.addEventListener("mouseup", () => {
+  if (!isDragging) return;
+  isDragging = false;
+  checkWord();
+  clearSelection(true);
+});
+
+// === Touch Events (Mobile) ===
+gridElement.addEventListener("touchstart", e => {
+  const cell = e.target.closest(".cell");
+  if (!cell || cell.classList.contains("found")) return;
+  isDragging = true;
+  startIndex = parseInt(cell.dataset.index);
+  updateSelection(startIndex);
+});
+
+gridElement.addEventListener("touchmove", e => {
+  const touch = e.touches[0];
+  const cell = document.elementFromPoint(touch.clientX, touch.clientY)?.closest(".cell");
+  if (isDragging && cell) updateSelection(parseInt(cell.dataset.index));
+});
+
+gridElement.addEventListener("touchend", e => {
+  if (!isDragging) return;
+  isDragging = false;
+  checkWord();
+  clearSelection(true);
+});
+
 function restartGame() {
   score = 0;
   scoreEl.textContent = 0;
@@ -140,12 +169,4 @@ function restartGame() {
   winScreen.style.display = "none";
 
   createGrid();
-}
-
-function clearSelection(reset) {
-  cells.forEach(c => c.classList.remove("selected"));
-  if (reset) {
-    currentWord = "";
-    startIndex = null;
-  }
 }
