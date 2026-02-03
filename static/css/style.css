@@ -1,3 +1,4 @@
+/* General */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f2f5;
@@ -22,6 +23,8 @@ h1 { color: #333; }
     align-items: flex-start;
     gap: 40px;
     margin-top: 20px;
+    overscroll-behavior: contain; /* prevents pull-to-refresh */
+    -webkit-overflow-scrolling: touch;
 }
 
 .grid {
@@ -129,7 +132,7 @@ h1 { color: #333; }
     background: #0056b3;
 }
 
-
+/* Responsive */
 @media (max-width: 768px) {
     .game-container {
         flex-direction: column;
@@ -137,7 +140,7 @@ h1 { color: #333; }
     }
 
     .grid {
-        grid-template-columns: repeat(12, minmax(20px, 1fr));
+        grid-template-columns: repeat(12, minmax(25px, 1fr));
         gap: 2px;
     }
 
@@ -167,7 +170,7 @@ h1 { color: #333; }
 
 @media (max-width: 480px) {
     .grid {
-        grid-template-columns: repeat(12, 20px); 
+        grid-template-columns: repeat(12, minmax(20px, 1fr));
         gap: 1px;
     }
 
@@ -181,3 +184,4 @@ h1 { color: #333; }
         padding: 40px 20px;
     }
 }
+

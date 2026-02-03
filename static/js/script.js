@@ -115,6 +115,7 @@ function clearSelection(reset) {
   }
 }
 
+// === Mouse Events ===
 gridElement.addEventListener("mousedown", e => {
   e.preventDefault();
   const cell = e.target.closest(".cell");
@@ -139,18 +140,20 @@ document.addEventListener("mouseup", () => {
 
 // === Touch Events (Mobile) ===
 gridElement.addEventListener("touchstart", e => {
+  e.preventDefault(); // prevent pull-to-refresh
   const cell = e.target.closest(".cell");
   if (!cell || cell.classList.contains("found")) return;
   isDragging = true;
   startIndex = parseInt(cell.dataset.index);
   updateSelection(startIndex);
-});
+}, { passive: false });
 
 gridElement.addEventListener("touchmove", e => {
+  e.preventDefault(); // prevent page scroll
   const touch = e.touches[0];
   const cell = document.elementFromPoint(touch.clientX, touch.clientY)?.closest(".cell");
   if (isDragging && cell) updateSelection(parseInt(cell.dataset.index));
-});
+}, { passive: false });
 
 gridElement.addEventListener("touchend", e => {
   if (!isDragging) return;
@@ -170,3 +173,4 @@ function restartGame() {
 
   createGrid();
 }
+
