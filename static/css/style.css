@@ -132,6 +132,7 @@ h1 { color: #333; }
     background: #0056b3;
 }
 
+
 @media (max-width: 768px) {
     .game-container {
         flex-direction: column;
@@ -139,15 +140,15 @@ h1 { color: #333; }
     }
 
     .grid {
-        grid-template-columns: repeat(8, 30px);
-        gap: 3px;
+        grid-template-columns: repeat(12, 25px); /* keep 12 columns */
+        gap: 2px;
         padding: 3px;
     }
 
     .cell {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
     }
 
     .words {
@@ -170,14 +171,14 @@ h1 { color: #333; }
 
 @media (max-width: 480px) {
     .grid {
-        grid-template-columns: repeat(6, 25px);
-        gap: 2px;
+        grid-template-columns: repeat(12, 20px); 
+        gap: 1px;
     }
 
     .cell {
-        width: 25px;
-        height: 25px;
-        font-size: 14px;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
     }
 
     .win-box {
